@@ -44,6 +44,13 @@ public class CrimeFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+
+        CrimeLab.get(getActivity()).updateCrime(mCrime);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_crime, container, false);
 		
@@ -103,7 +110,7 @@ public class CrimeFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_item_delete_crime:
-                UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
+                UUID crimeId = mCrime.getId();
                 CrimeLab.get(getActivity()).deleteCrime(crimeId);
                 getActivity().finish();
                 return true;

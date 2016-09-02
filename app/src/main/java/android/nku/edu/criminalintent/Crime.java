@@ -18,8 +18,11 @@ public class Crime {
     public Crime() {
         mId = UUID.randomUUID();
         mDate = new Date();
-        //DateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, yyyy");
-        //mDate = dateFormat.format(Calendar.getInstance().getTime());
+    }
+
+    public Crime(UUID id) {
+        mId = id;
+        mDate = new Date();
     }
 
     public UUID getId() {

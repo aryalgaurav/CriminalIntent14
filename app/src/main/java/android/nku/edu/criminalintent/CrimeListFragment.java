@@ -129,6 +129,7 @@ public class CrimeListFragment extends Fragment {
             mCrimeRecyclerView.setAdapter(mAdapter);
         }
         else {
+            mAdapter.setCrimes(crimes);
             //When the user deletes a crime, the entire data-set is changed. So, notifyItemChanged will not work in that case.
             mAdapter.notifyDataSetChanged();
         }
@@ -203,6 +204,8 @@ public class CrimeListFragment extends Fragment {
             return mCrimes.size();
         }
 
-
+        public void setCrimes(List<Crime> crimes) {
+            mCrimes = crimes;
+        }
     }
 }
